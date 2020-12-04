@@ -18,6 +18,14 @@ while (True):
         user_gray = gray[y:y+h, x:x+w]
         img_item = 'user_image.png'
         cv2.imwrite(img_item, user_gray)
+
+        # ? Draw a rectangle around the face
+        color = (51, 51, 255)  # * BGR value for the color of the rectangle
+        stroke = 5  # * Defines the thickness of the lines
+        end_cord_x = x + w
+        end_cord_y = y + h
+        cv2.rectangle(frame, (x, y), (end_cord_x, end_cord_y), color, stroke)
+
     # ? Display the resulting frame
     cv2.imshow('frame', frame)
     if cv2.waitKey(20) & 0xFF == ord('q'):
